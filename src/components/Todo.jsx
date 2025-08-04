@@ -32,7 +32,12 @@ const Todo = () => {
         </h1>
         
         <div className='flex gap-3'>
-            <input type="text" />
+            <input 
+            type="text"
+            placeholder="What do you ned to do ?"
+            value={task}
+            onChange={handleChange}
+            className='flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500' />
             <button>Add</button>
         </div>
 
