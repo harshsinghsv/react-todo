@@ -38,7 +38,10 @@ const Todo = () => {
             value={task}
             onChange={handleChange}
             className='flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500' />
-            <button>Add</button>
+
+            <button 
+            onclick={handleAdd}
+            className='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition' >Add</button>
         </div>
 
         <button
