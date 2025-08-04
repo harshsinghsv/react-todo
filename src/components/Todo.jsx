@@ -25,7 +25,11 @@ const Todo = () => {
 
 
   return (
-    <div>
+    <div className='max-w-xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg'>
+
+        <h1 className=''>
+            Todo App
+        </h1>
         <input
          type="text"
          placeholder='Enter a task' 
