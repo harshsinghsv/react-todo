@@ -43,12 +43,12 @@ const Todo = () => {
             className='bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition' >Add</button>
         </div>
 
-        <button
-            onclick={handleAdd}
-            className='p-2 ml-3'
-        >
-            ADD    
-        </button>
+        <ul className='mt-6 space-y-3'>
+            {todos.map((todo) => (
+                <li key={todo.id} className='bg-gray-100 px-4 py-2 rounded-md shadows-sm text-gray-800' >{todo.list}</li>
+            ))}
+
+        </ul>
     </div>
   )
 }
