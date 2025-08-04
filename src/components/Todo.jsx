@@ -11,8 +11,7 @@ const Todo = () => {
     };
 
     const handleAdd = () =>{
-        console.log('Add Task:', task);
-        setTask('');
+        if (!task.trim()) return;
     };
 
     const newTodo = {
