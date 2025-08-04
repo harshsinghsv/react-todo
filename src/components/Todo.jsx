@@ -30,13 +30,11 @@ const Todo = () => {
         <h1 className=''>
             Todo App
         </h1>
-        <input
-         type="text"
-         placeholder='Enter a task' 
-         value={task}
-         onChange={handleChange}
-         className='p-2 w-[60%]'
-        />
+        
+        <div className='flex gap-3'>
+            <input type="text" />
+            <button>Add</button>
+        </div>
 
         <button
             onclick={handleAdd}
