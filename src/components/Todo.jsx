@@ -25,6 +25,13 @@ const Todo = () => {
     const handleDelete = (id) => {
         const updatedTodos = todos.filter((todo) => todo.id !==id);
         setTodos(updatedTodos);
+    };
+
+    const handleToggle = (id) => {
+        const updatedTodos = todos.map((todo)=>
+            todo.id === id ? {...todo, completed: !todo.completed} : todo
+        );
+        setTodos(updatedTodos);
     }
 
 
@@ -50,8 +57,18 @@ const Todo = () => {
 
         <ul className='mt-6 space-y-3'>
             {todos.map((todo) => (
-                <li key={todo.id} className='bg-gray-100 px-4 py-2 rounded-md shadow-sm text-gray-800' >
-                    <span>{todo.text}</span>
+                <li key={todo.id} className='flex justify-between items-center bg-gray-100 px-4 py-2 rounded-md shadow-sm text-gray-800' >
+                    <div className='flex items-center gap-2'>
+                        <input 
+                        type="checkbox" 
+                        checked={todo.completed}
+                        onChange={()=> handleToggle(todo.id)}
+                        className='w-4 h-4 accent-blue-600'
+                        />
+                        <span className={todo.completed ? "line-through text-gray-500" : ""}>
+                            {todo.text}
+                        </span>
+                    </div>
                     <button
                     onClick={()=> handleDelete(todo.id)}
                     className='text-red-500 hover:text-red-700  text-sm font-medium'
