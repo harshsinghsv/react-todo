@@ -22,6 +22,11 @@ const Todo = () => {
         setTask('');
     };
 
+    const handleDelete = (id) => {
+        const updatedTodos = todos.filter((todo) => todo.id !==id);
+        setTodos(updatedTodos);
+    }
+
 
   return (
     <div className='max-w-xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg'>
@@ -45,7 +50,15 @@ const Todo = () => {
 
         <ul className='mt-6 space-y-3'>
             {todos.map((todo) => (
-                <li key={todo.id} className='bg-gray-100 px-4 py-2 rounded-md shadow-sm text-gray-800' >{todo.text}</li>
+                <li key={todo.id} className='bg-gray-100 px-4 py-2 rounded-md shadow-sm text-gray-800' >
+                    <span>{todo.text}</span>
+                    <button
+                    onClick={()=> handleDelete(todo.id)}
+                    className='text-red-500 hover:text-red-700  text-sm font-medium'
+                    >
+                        ❌
+                    </button>
+                </li>
             ))}
 
         </ul>
