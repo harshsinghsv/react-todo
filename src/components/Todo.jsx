@@ -5,6 +5,9 @@ const Todo = () => {
     const [task, setTask] = useState('');
     const [todos, setTodos] = useState([]);
 
+    const [editingId, setEditingId] = useState(null);
+    const [editedText, setEditedText] = useState('');
+
 
     const handleChange = (e)=>{
         setTask(e.target.value);
@@ -33,6 +36,18 @@ const Todo = () => {
         );
         setTodos(updatedTodos);
     }
+
+    const handleSave = (id) => {
+        setTodos(
+            todos.map((todo)=>
+            todo.id === id ? {...todo, text: editedText} : todo
+        )
+        );
+        setEditingId(null);
+        setEditedText('');
+    }
+
+
 
 
   return (
@@ -68,7 +83,44 @@ const Todo = () => {
                         <span className={todo.completed ? "line-through text-gray-500" : ""}>
                             {todo.text}
                         </span>
+
+                        {editingId === todo.id ? (
+                            <>
+                            <input 
+                            value={editedText}
+                            onChange={(e)=> setEditedText(e.target.value)}
+                            className='border px-2 py-1 rounded-md text-shadow-amber-200'
+                            />
+                            <button
+                            onClick={()=> handleSave(todo.id)}
+                            className='ml-2 text-green-500 hover:text-green-700'     
+                            >
+                                ✅
+                            </button>
+                            </>
+
+                        ) : (
+                            <span className={todo.completed ? "line-through text-gray-500" : ""}>
+                                {todo.text}
+                            </span>
+                            
+                        )};
+
                     </div>
+
+                    <button
+                    onClick={()=> {
+                        setEditingId(todo.id);
+                        setEditedText(todo.text);
+                    }}
+                    className='text-yellow-500 hover:text-yellow-700 text-sm font-medium ml-2'
+                    >
+                        ✏️
+                    </button>
+
+
+
+
                     <button
                     onClick={()=> handleDelete(todo.id)}
                     className='text-red-500 hover:text-red-700  text-sm font-medium'
