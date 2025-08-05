@@ -80,10 +80,6 @@ const Todo = () => {
                         onChange={()=> handleToggle(todo.id)}
                         className='w-4 h-4 accent-blue-600'
                         />
-                        <span className={todo.completed ? "line-through text-gray-500" : ""}>
-                            {todo.text}
-                        </span>
-
                         {editingId === todo.id ? (
                             <>
                             <input 
@@ -104,7 +100,7 @@ const Todo = () => {
                                 {todo.text}
                             </span>
                             
-                        )};
+                        )}
 
                     </div>
 
